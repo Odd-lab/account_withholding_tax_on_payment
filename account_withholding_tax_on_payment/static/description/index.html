@@ -1,0 +1,183 @@
+<section class="oe_container">
+  <div class="oe_row oe_spaced">
+    <div class="oe_span12" style="text-align:center;">
+      <h1 style="margin-bottom:8px;">Withholding Tax On Payment</h1>
+      <p style="font-size:16px; margin:0;">
+        Create and manage <strong>Withholding Tax (WHT)</strong> documents linked to <strong>Payments</strong> in
+        <strong>Odoo 18</strong>.
+      </p>
+      <p style="color:#666; margin-top:6px;">
+        Includes WHT certificate printing, XLSX export, tax section support, and company-based sequence management.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="oe_container">
+  <div class="oe_row oe_spaced">
+    <div class="oe_span6">
+      <h2>Overview</h2>
+      <p>
+        This module extends the standard withholding tax workflow by linking
+        <strong>Withholding Tax documents</strong> directly to
+        <strong>Payments</strong>. It helps accounting teams manage WHT
+        certificates more efficiently, with support for confirmation checks,
+        document numbering, report printing, and XLSX export.
+      </p>
+
+      <h3>Why use this module?</h3>
+      <ul>
+        <li>Manage WHT certificates directly from payment records</li>
+        <li>Keep withholding tax documents organized and traceable</li>
+        <li>Print official WHT certificates in PDF format</li>
+        <li>Export certificate data to XLSX using a predefined template</li>
+      </ul>
+    </div>
+
+    <div class="oe_span6">
+      <h2>Key Features</h2>
+      <ul>
+        <li>Adds a dedicated Withholding Tax document model</li>
+        <li>Links WHT documents with account.payment</li>
+        <li>Opens related WHT documents directly from Payment form</li>
+        <li>Supports WHT Payment options</li>
+        <li>Adds Tax Section field in wizard, payment, and WHT form</li>
+        <li>Requires Other field for specific tax sections</li>
+        <li>Company-based WHT sequence generation</li>
+        <li>Confirmation allowed only when payment is paid</li>
+        <li>QWeb PDF certificate report</li>
+        <li>XLSX export with template-based output</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="oe_container">
+  <div class="oe_row oe_spaced">
+    <div class="oe_span12">
+      <h2>How it works</h2>
+      <ul>
+        <li>Create a payment from Vendor Bill / Invoice using <strong>Register Payment</strong></li>
+        <li>Fill withholding tax lines and select the proper <strong>Tax Section</strong></li>
+        <li>Confirm payment as usual</li>
+        <li>The system automatically creates a linked <strong>Withholding Tax document</strong></li>
+        <li>Users can print the certificate or export it to XLSX later</li>
+      </ul>
+
+      <h3>Supported WHT Payment Types</h3>
+      <table class="table table-bordered" style="max-width:720px;">
+        <thead>
+          <tr>
+            <th>Code</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>(1)</td>
+            <td>Withheld at source</td>
+          </tr>
+          <tr>
+            <td>(2)</td>
+            <td>Issued for life</td>
+          </tr>
+          <tr>
+            <td>(3)</td>
+            <td>One-time issuance</td>
+          </tr>
+          <tr>
+            <td>(4)</td>
+            <td>Others</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="color:#666;">
+        The module helps standardize withholding tax processing from payment creation to certificate output.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="oe_container">
+  <div class="oe_row oe_spaced">
+    <div class="oe_span12">
+      <h2>Configuration</h2>
+      <ol>
+        <li>Go to <strong>Settings &#8594; Accounting</strong></li>
+        <li>Configure <strong>Withholding Tax Sequence</strong> for each company</li>
+        <li>Open Vendor Bill / Invoice and click <strong>Register Payment</strong></li>
+        <li>Fill withholding tax lines in the payment register wizard</li>
+        <li>Set the correct <strong>Tax Section</strong> and WHT Payment type</li>
+        <li>Confirm the payment</li>
+      </ol>
+      <p style="color:#666;">
+        If no WHT sequence is defined, the system can automatically create one during confirmation.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Screenshots -->
+<section class="oe_container">
+  <div class="oe_row oe_spaced">
+    <div class="oe_span12" style="text-align:center;">
+      <h2>Screenshots</h2>
+      <p style="color:#666;">Replace these images with real screenshots from your module for better presentation.</p>
+    </div>
+
+    <div class="oe_span6" style="text-align:center;">
+      <img src="./assets/screenshots/screenshot1.png" alt="Payment Register Withholding Tax"
+        style="max-width:100%; border-radius:12px;" />
+      <p style="color:#888; margin-top:8px;">Payment Register with Withholding Tax lines</p>
+    </div>
+
+    <div class="oe_span6" style="text-align:center;">
+      <img src="./assets/screenshots/screenshot2.png" alt="Withholding Tax Document"
+        style="max-width:100%; border-radius:12px;" />
+      <p style="color:#888; margin-top:8px;">Withholding Tax document form</p>
+    </div>
+  </div>
+</section>
+
+<section class="oe_container">
+  <div class="oe_row oe_spaced">
+    <div class="oe_span12">
+      <h2>Technical Information</h2>
+      <ul>
+        <li><strong>Technical name:</strong> account_withholding_tax_on_payment</li>
+        <li><strong>Version:</strong> 18.0.1.0.0</li>
+        <li><strong>Category:</strong> Accounting</li>
+        <li><strong>Dependency:</strong> l10n_account_withholding_tax</li>
+        <li><strong>External dependency:</strong> openpyxl</li>
+        <li><strong>Main model:</strong> account.withholding.tax</li>
+        <li><strong>Line model:</strong> account.withholding.tax.line</li>
+        <li><strong>License:</strong> OPL-1</li>
+      </ul>
+
+      <h3>Notes</h3>
+      <ul>
+        <li>Done WHT documents cannot be deleted</li>
+        <li>Confirmation is allowed only when the related payment is in paid state</li>
+        <li>Supports Thai formatting and Buddhist Era year in some outputs</li>
+        <li>XLSX export uses a template stored inside the module</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="oe_container">
+  <div class="oe_row oe_spaced">
+    <div class="oe_span12">
+      <h2>Maintainer</h2>
+      <p>
+        <strong>Odd Lab</strong>
+      </p>
+
+      <h2>Support</h2>
+      <p>
+        For installation help, customization, or issue reporting, please contact the author via the Odoo Apps support
+        channel or project repository.
+      </p>
+    </div>
+  </div>
+</section>
