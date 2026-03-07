@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <template id="report_account_wht_certificate">
+    <t t-foreach="docs" t-as="o">
+      <t t-call="web.basic_layout">
+        <t t-set="o" t-value="o.with_context(lang='th_TH')" />
+        <div
+          data-name="wh3"
+          style="background-image: url(/account_withholding_tax_on_payment/static/src/img/WithholdingCert.png); background-repeat: no-repeat; background-size: 100% 1150px; min-height: 1150px;"
+        >
+          <div class="page height_background_portrait">
+            <div class="name-wht">
+              <span t-if="o.name" t-field="o.name" />
+            </div>
+
+            <!-- ผู้ถูกเสียภาษี -->
+            <div class="id-card">
+              <t t-if="o.company_id.partner_id.th_split_tax_number()">
+                <span
+                  style="margin-left:2px;"
+                  t-out="o.company_id.partner_id.th_split_tax_number()[0]"
+                />
+                <span
+                  style="padding-left:12px;"
+                  class="spacing-8"
+                  t-out="o.company_id.partner_id.th_split_tax_number()[1]"
+                />
+                <span
+                  style="padding-left:6px;"
+                  class="spacing-8"
+                  t-out="o.company_id.partner_id.th_split_tax_number()[2]"
+                />
+                <span
+                  style="padding-left:5px;"
+                  class="spacing-8"
+                  t-out="o.company_id.partner_id.th_split_tax_number()[3]"
+                />
+                <span
+                  style="padding-left:7px;"
+                  class="spacing-8"
+                  t-out="o.company_id.partner_id.th_split_tax_number()[4]"
+                />
+              </t>
+            </div>
+            <div class="taxpayer">
+              <span t-field="o.env.company.name" />
+            </div>
+            <div class="taxpayer-address">
+              <span t-esc="o.env.company.partner_id._get_address_partner()" />
+            </div>
+            <!-- ผู้ถูกหักภาษี -->
+            <div class="id-card-2">
+              <t t-if="o.partner_id.th_split_tax_number()">
+                <span
+                  style="margin-left:2px;"
+                  t-out="o.partner_id.th_split_tax_number()[0]"
+                />
+                <span
+                  style="padding-left:14px;"
+                  class="spacing-8"
+                  t-out="o.partner_id.th_split_tax_number()[1]"
+                />
+                <span
+                  style="padding-left:6px;"
+                  class="spacing-8"
+                  t-out="o.partner_id.th_split_tax_number()[2]"
+                />
+                <span
+                  style="padding-left:3px;"
+                  class="spacing-8"
+                  t-out="o.partner_id.th_split_tax_number()[3]"
+                />
+                <span
+                  style="padding-left:7px;"
+                  class="spacing-8"
+                  t-out="o.partner_id.th_split_tax_number()[4]"
+                />
+              </t>
+            </div>
+            <div class="taxpayer-2">
+              <span t-field="o.partner_id.name" />
+            </div>
+            <div class="taxpayer-address-2">
+              <span t-esc="o.partner_id._get_address_partner()" />
+            </div>
+            <t t-set="pnd_map" t-value="{'pnd3': 'pnd3'}" />
+            <t t-set="pnd_class" t-value="pnd_map.get(o.pnd_type, 'pnd53')" />
+
+            <div class="taxpayer-pnd-sequence">
+              <span t-esc="o.pnd_sequence" />
+            </div>
+
+            <div t-attf-class="#{pnd_class}">
+              <span> &#x2713;</span>
+            </div>
+            <!-- line wht -->
+            <t t-set="total_base_amount" t-value="0" />
+            <t t-set="total_wht_amount" t-value="0" />
+            <t t-foreach="o._get_wht_data()" t-as="line">
+              <t
+                t-set="base_amount"
+                t-value="o.partner_id.currency_id.float_split_amount_str(line.get('base_amount'))"
+              />
+              <t
+                t-set="wht_amount"
+                t-value="o.partner_id.currency_id.float_split_amount_str(line.get('amount'))"
+              />
+              <div t-attf-class="wht-#{line.get('sequence')}-col-1">
+                <span
+                  style="padding-left:5px;"
+                  t-out="o.get_report_locale_date(dt=o.document_date, py_format=None, be_year=True)"
+                />
+              </div>
+              <div t-attf-class="wht-#{line.get('sequence')}-col-2">
+                <span t-out="base_amount[0]" />
+                <span style="padding-left:5px;" t-out="base_amount[1]" />
+              </div>
+              <div t-attf-class="wht-#{line.get('sequence')}-col-3">
+                <span t-out="wht_amount[0]" />
+                <span style="padding-left:3px;" t-out="wht_amount[1]" />
+              </div>
+
+              <t t-if="line.get('sequence') in ['425', '6']">
+                <div t-attf-class="wht_other_#{line.get('sequence')}-col-1">
+                  <span style="padding-left:5px;" t-out="line.get('other') or ''" />
+                </div>
+              </t>
+
+              <t
+                t-set="total_base_amount"
+                t-value="total_base_amount + round(int(base_amount[0]), 2)"
+              />
+              <t
+                t-set="total_wht_amount"
+                t-value="total_wht_amount + round(int(wht_amount[0]), 2)"
+              />
+            </t>
+            <!-- wht total -->
+            <t
+              t-set="total_wht_amount_text"
+              t-value="o.partner_id.currency_id.amount_to_text(total_wht_amount)"
+            />
+            <t
+              t-set="total_base_amount"
+              t-value="o.partner_id.currency_id.float_split_amount_str(total_base_amount)"
+            />
+            <t
+              t-set="total_wht_amount"
+              t-value="o.partner_id.currency_id.float_split_amount_str(total_wht_amount)"
+            />
+            <div class="wht-total-col-1" style="font-weight: bold;">
+              <span t-out="total_base_amount[0]" />
+              <span style="padding-left: 5px;" t-out="total_base_amount[1]" />
+            </div>
+            <div class="wht-total-col-2" style="font-weight: bold;">
+              <span t-out="total_wht_amount[0]" />
+              <span style="padding-left: 5px;" t-out="total_wht_amount[1]" />
+            </div>
+            <div class="wht-total-th-col-1" style="font-weight: bold;">
+              <span t-out="total_wht_amount_text" />
+            </div>
+            <!-- wht total th -->
+            <!-- ผู้จ่ายเงิน -->
+            <t
+              t-set="wht_payment_map"
+              t-value="{
+                                'wht': 'wht-payment-wht',
+                                'forever': 'wht-payment-forever',
+                                'once': 'wht-payment-once',
+                                'other': 'wht-payment-other'
+                            }"
+            />
+            <t t-set="wht_payment_class" t-value="wht_payment_map.get(o.wht_payment)" />
+
+            <t t-if="wht_payment_class">
+              <div t-attf-class="#{wht_payment_class}">
+                <span> &#x2713;</span>
+              </div>
+            </t>
+          </div>
+
+          <t t-if="o.get_report_locale_date(dt=o.document_date)">
+            <div class="wht-document-datetime-days">
+              <span
+                t-out="o.get_report_locale_date(dt=o.document_date, py_format='%d')"
+              />
+            </div>
+            <div class="wht-document-datetime-month">
+              <span
+                t-out="o.get_report_locale_date(dt=o.document_date, py_format='%B')"
+              />
+            </div>
+            <div class="wht-document-datetime-year">
+              <span
+                t-out="o.get_report_locale_date(dt=o.document_date, py_format='%y', be_year=True)"
+              />
+            </div>
+          </t>
+        </div>
+      </t>
+    </t>
+  </template>
+</odoo>

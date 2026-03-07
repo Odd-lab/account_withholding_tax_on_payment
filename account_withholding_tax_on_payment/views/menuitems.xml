@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <menuitem
+    name="Withholding Tax"
+    id="menu_action_withholding_tax"
+    action="account_withholding_tax_on_payment.action_account_withholding_tax"
+    parent="account.menu_finance_payables"
+    sequence="25"
+  />
+</odoo>

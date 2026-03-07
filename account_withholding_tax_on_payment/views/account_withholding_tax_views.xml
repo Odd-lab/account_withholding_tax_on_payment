@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <record id="view_account_withholding_tax_form" model="ir.ui.view">
+    <field name="name">account.withholding.tax.form</field>
+    <field name="model">account.withholding.tax</field>
+    <field name="arch" type="xml">
+      <form string="Withholding Tax">
+        <header>
+          <button
+            name="action_set_to_draft"
+            string="Set to Draft"
+            type="object"
+            invisible="state != 'done'"
+          />
+          <button
+            name="action_done"
+            string="Confirm"
+            type="object"
+            class="oe_highlight"
+            invisible="state != 'draft'"
+          />
+          <button name="action_export_xlsx" string="Export XLSX" type="object" />
+          <field name="state" widget="statusbar" statusbar_visible="draft,done" />
+        </header>
+        <sheet>
+          <div class="oe_button_box" name="button_box">
+            <button
+              name="action_open_bill"
+              type="object"
+              class="oe_stat_button"
+              icon="fa-bars"
+              invisible="not payment_id"
+            >
+              <div class="o_form_field o_stat_info">
+                <span class="o_stat_text">
+                  <span> Bill</span>
+                </span>
+              </div>
+            </button>
+
+            <button
+              name="action_open_payment"
+              type="object"
+              class="oe_stat_button"
+              icon="fa-bars"
+              invisible="not payment_id"
+            >
+              <div class="o_form_field o_stat_info">
+                <span class="o_stat_text">
+                  <span> Payment</span>
+                </span>
+              </div>
+            </button>
+          </div>
+          <div class="oe_title">
+            <h1>
+              <field name="name" placeholder="e.g. WHT-001" />
+            </h1>
+          </div>
+          <group name="group_1">
+            <group name="group_1_1">
+              <field name="partner_id" />
+              <field name="document_date" readonly="state != 'draft'" />
+              <field name="pnd_sequence" />
+              <field name="company_id" groups="base.group_multi_company" />
+            </group>
+            <group name="group_1_2">
+              <field name="wht_payment" readonly="state != 'draft'" />
+              <field name="pnd_type" />
+              <field name="source_document" readonly="state != 'draft'" />
+              <field name="is_stamp_signature" />
+            </group>
+          </group>
+          <notebook>
+            <page name="detail" string="Detail">
+              <field
+                name="withholding_line_ids"
+                nolabel="1"
+                colspan="2"
+                readonly="state != 'draft'"
+              >
+                <list editable="bottom">
+                  <field name="account_id" width="184px" optional="show" />
+                  <field name="tax_section" />
+                  <field
+                    name="tax_id"
+                    options="{'no_open': True, 'no_create': True}"
+                    string="Tax"
+                    width="92px"
+                  />
+                  <field name="base_amount" />
+                  <field
+                    name="analytic_distribution"
+                    widget="analytic_distribution"
+                    groups="analytic.group_analytic_accounting"
+                  />
+                  <field name="amount" string="Withheld Amount" />
+                  <field name="other" required="tax_section in ('425', '6')" />
+                </list>
+              </field>
+            </page>
+          </notebook>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="view_account_withholding_tax_list" model="ir.ui.view">
+    <field name="name">account.withholding.tax.list</field>
+    <field name="model">account.withholding.tax</field>
+    <field name="arch" type="xml">
+      <list string="Withholding Tax">
+        <field name="name" />
+        <field name="document_date" width="130px" />
+        <field name="partner_id" />
+        <field name="wht_payment" />
+        <field name="source_document" />
+        <field name="pnd_type" />
+        <field name="total_base_amount" width="200px" />
+        <field name="total_withholding_amount" width="200px" />
+        <field name="state" />
+      </list>
+    </field>
+  </record>
+
+  <record id="action_account_withholding_tax" model="ir.actions.act_window">
+    <field name="name">Withholding Tax</field>
+    <field name="res_model">account.withholding.tax</field>
+    <field name="view_mode">list,form</field>
+    <field name="help" type="html">
+      <p class="o_view_nocontent_create">
+                Create a Withholding Tax
+            </p>
+    </field>
+  </record>
+</odoo>

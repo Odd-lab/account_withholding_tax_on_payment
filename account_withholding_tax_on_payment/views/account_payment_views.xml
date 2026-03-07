@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <record id="view_account_payment_form" model="ir.ui.view">
+    <field name="name">account.payment.form.inherit.wht</field>
+    <field name="model">account.payment</field>
+    <field
+      name="inherit_id"
+      ref="l10n_account_withholding_tax.view_account_payment_form"
+    />
+    <field name="arch" type="xml">
+      <xpath
+        expr="//notebook[@name='payment_notebook']//field[@name='withholding_line_ids']//field[@name='base_amount']"
+        position="before"
+      >
+        <field name="tax_section" />
+      </xpath>
+      <div name="button_box" position="inside">
+        <button
+          name="action_open_withholding_tax"
+          type="object"
+          class="oe_stat_button"
+          icon="fa-bars"
+          invisible="not withholding_line_ids"
+        >
+          <div class="o_form_field o_stat_info">
+            <span class="o_stat_text">
+              <span> Withholding Tax</span>
+            </span>
+          </div>
+        </button>
+      </div>
+      <xpath
+        expr="//notebook[@name='payment_notebook']//field[@name='withholding_line_ids']//field[@name='name']"
+        position="attributes"
+      >
+        <attribute name="column_invisible">1</attribute>
+      </xpath>
+    </field>
+  </record>
+</odoo>

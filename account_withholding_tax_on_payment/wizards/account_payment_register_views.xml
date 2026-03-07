@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <record id="view_account_payment_register_form" model="ir.ui.view">
+    <field name="name">account.payment.register.form.inherit.tax_section</field>
+    <field name="model">account.payment.register</field>
+    <field
+      name="inherit_id"
+      ref="l10n_account_withholding_tax.view_account_payment_register_form"
+    />
+    <field name="arch" type="xml">
+      <xpath
+        expr="//page[@name='withholding_page']//field[@name='base_amount']"
+        position="before"
+      >
+        <field name="tax_section" />
+      </xpath>
+
+      <group name="group1" position="inside">
+        <field name="wht_payment" invisible="not should_withhold_tax" />
+      </group>
+      <xpath
+        expr="//page[@name='withholding_page']//field[@name='name']"
+        position="attributes"
+      >
+        <attribute name="column_invisible">1</attribute>
+      </xpath>
+      <xpath
+        expr="//page[@name='withholding_page']//field[@name='withholding_line_ids']//list"
+        position="inside"
+      >
+        <field name="other" required="tax_section in ('425', '6')" />
+      </xpath>
+    </field>
+  </record>
+</odoo>

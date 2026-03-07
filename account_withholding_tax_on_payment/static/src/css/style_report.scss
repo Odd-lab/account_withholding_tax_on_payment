@@ -1,0 +1,406 @@
+$fontSize: 14px;
+$addressFontSize: 12px;
+
+$address1Top: 206px;
+$address2Top: $address1Top+20px;
+$address3Top: $address2Top+20px;
+$address4Top: $address3Top+20px;
+$address5Top: $address4Top+20px;
+
+$partnerAddressTop: 330px;
+
+div {
+  .account-pnd54 {
+    font-size: $fontSize;
+
+    .id-card-pnd54 {
+      position: absolute;
+      top: 128px;
+      left: 210px;
+    }
+
+    .branch-code-pnd54 {
+      position: absolute;
+      top: 150px;
+      left: 377px;
+      letter-spacing: 7px;
+    }
+
+    .section-pnd54-no {
+      position: absolute;
+      top: 135px;
+      left: 467px;
+    }
+
+    .section-pnd54-twi {
+      position: absolute;
+      top: 167px;
+      left: 467px;
+    }
+
+    .fill-type-pnd54-ordinary {
+      position: absolute;
+      top: 237px;
+      left: 467px;
+    }
+
+    .fill-type-pnd54-additional {
+      position: absolute;
+      top: 237px;
+      left: 607px;
+    }
+
+    .additional_fill {
+      position: absolute;
+      top: 235px;
+      left: 732px;
+    }
+
+    .address-pnd54-font-size {
+      font-size: $addressFontSize;
+
+      .company-name-pnd54 {
+        position: absolute;
+        top: 175px;
+        left: 46px;
+        width: 280px;
+      }
+
+      .address-pnd54-1 {
+        position: absolute;
+        top: $address1Top;
+        left: 157px;
+      }
+
+      .address-pnd54-2 {
+        position: absolute;
+        top: $address2Top;
+        left: 87px;
+      }
+
+      .address-pnd54-3 {
+        position: absolute;
+        top: $address3Top;
+        left: 75px;
+      }
+
+      .address-pnd54-4 {
+        position: absolute;
+        top: $address4Top;
+        left: 105px;
+      }
+
+      .address-pnd54-zip {
+        position: absolute;
+        top: 284px;
+        left: 119px;
+        font-size: $fontSize;
+        letter-spacing: 7px;
+      }
+
+      .address-pnd54-phone {
+        position: absolute;
+        top: $address5Top;
+        left: 250px;
+      }
+
+      .partner-name-pnd54 {
+        position: absolute;
+        top: $partnerAddressTop;
+        left: 120px;
+        width: 280px;
+      }
+
+      .partner-address-pnd54-1 {
+        position: absolute;
+        top: $partnerAddressTop + 20px;
+        left: 150px;
+      }
+
+      .partner-address-pnd54-2 {
+        position: absolute;
+        top: $partnerAddressTop + 20px;
+        left: 260px;
+        width: 200px;
+      }
+
+      .partner-address-pnd54-3 {
+        position: absolute;
+        top: $partnerAddressTop + 40px;
+        left: 70px;
+        width: 165px;
+      }
+
+      .partner-address-pnd54-4 {
+        position: absolute;
+        top: $partnerAddressTop + 40px;
+        left: 275px;
+      }
+    }
+
+    .wht-payment-wht {
+      position: absolute;
+      top: 602px;
+      left: 147px;
+    }
+
+    .wht-payment-no {
+      position: absolute;
+      top: 607px;
+      left: 225px;
+    }
+
+    .ex_doc_no {
+      position: absolute;
+      top: 651px;
+      left: 225px;
+    }
+
+    .date-pnd54 {
+      position: absolute;
+      top: 630px;
+      left: 430px;
+      font-size: $addressFontSize;
+    }
+
+    .percent-wht {
+      position: absolute;
+      top: 535px;
+      left: 240px;
+      font-size: $addressFontSize;
+    }
+
+    .total-amount-pnd54 {
+      position: absolute;
+      top: 510px;
+      right: 76px;
+      letter-spacing: 6px;
+    }
+
+    .total-amount-pnd54-stang {
+      position: absolute;
+      top: 510px;
+      left: 735px;
+      letter-spacing: 3px;
+    }
+
+    .total-tax-pnd54 {
+      position: absolute;
+      top: 534px;
+      right: 76px;
+      letter-spacing: 6px;
+    }
+
+    .total-tax-pnd54-stang {
+      position: absolute;
+      top: 534px;
+      left: 735px;
+      letter-spacing: 3px;
+    }
+
+    .add-amount-pnd54 {
+      position: absolute;
+      top: 558px;
+      right: 76px;
+      letter-spacing: 6px;
+    }
+
+    .add-amount-pnd54-stang {
+      position: absolute;
+      top: 558px;
+      left: 735px;
+      letter-spacing: 3px;
+    }
+
+    .total-tax-send-pnd54 {
+      position: absolute;
+      top: 582px;
+      right: 76px;
+      letter-spacing: 6px;
+    }
+
+    .total-tax-send-stang {
+      position: absolute;
+      top: 582px;
+      left: 735px;
+      letter-spacing: 3px;
+    }
+
+    .partner-name-twi {
+      position: absolute;
+      top: 696px;
+      left: 285px;
+    }
+
+    .partner-street1-twi {
+      position: absolute;
+      top: 716px;
+      left: 133px;
+    }
+
+    .partner-street2-twi {
+      position: absolute;
+      top: 716px;
+      left: 263px;
+    }
+
+    .partner-city-twi {
+      position: absolute;
+      top: 716px;
+      left: 420px;
+    }
+
+    .partner-country-twi {
+      position: absolute;
+      top: 716px;
+      left: 620px;
+    }
+
+    .ex_doc_no-twi {
+      position: absolute;
+      top: 886px;
+      left: 225px;
+    }
+
+    .date-pnd54-twi {
+      position: absolute;
+      top: 865px;
+      left: 447px;
+      font-size: $addressFontSize;
+    }
+
+    .total-amount-pnd54-twi {
+      position: absolute;
+      top: 769px;
+      right: 76px;
+      letter-spacing: 6px;
+    }
+
+    .total-amount-pnd54-twi-stang {
+      position: absolute;
+      top: 769px;
+      left: 735px;
+      letter-spacing: 3px;
+    }
+
+    .total-tax-pnd54-twi {
+      position: absolute;
+      top: 793px;
+      right: 76px;
+      letter-spacing: 6px;
+    }
+
+    .total-tax-pnd54-twi-stang {
+      position: absolute;
+      top: 793px;
+      left: 735px;
+      letter-spacing: 3px;
+    }
+
+    .add-amount-pnd54-twi {
+      position: absolute;
+      top: 817px;
+      right: 76px;
+      letter-spacing: 6px;
+    }
+
+    .add-amount-pnd54-twi-stang {
+      position: absolute;
+      top: 817px;
+      left: 735px;
+      letter-spacing: 3px;
+    }
+
+    .total-tax-send-pnd54-twi {
+      position: absolute;
+      top: 841px;
+      right: 76px;
+      letter-spacing: 6px;
+    }
+
+    .total-tax-send-twi-stang {
+      position: absolute;
+      top: 841px;
+      left: 735px;
+      letter-spacing: 3px;
+    }
+
+    .wht-type-2 {
+      position: absolute;
+      top: 412px;
+      left: 70px;
+    }
+
+    .wht-type-3 {
+      position: absolute;
+      top: 429px;
+      left: 70px;
+    }
+
+    .wht-type-1300 {
+      position: absolute;
+      top: 447px;
+      left: 70px;
+    }
+
+    .wht-type-1400 {
+      position: absolute;
+      top: 464px;
+      left: 70px;
+    }
+
+    .wht-type-1500 {
+      position: absolute;
+      top: 412px;
+      left: 334px;
+    }
+
+    .wht-type-4 {
+      position: absolute;
+      top: 446px;
+      left: 334px;
+    }
+
+    .wht-type-1700 {
+      position: absolute;
+      top: 464px;
+      left: 334px;
+    }
+
+    .wht-type-1800 {
+      position: absolute;
+      top: 412px;
+      left: 546px;
+    }
+
+    .wht-type-note-1800 {
+      position: absolute;
+      top: 410px;
+      left: 718px;
+    }
+
+    .wht-type-1900 {
+      position: absolute;
+      top: 429px;
+      left: 546px;
+    }
+
+    .wht-type-2000 {
+      position: absolute;
+      top: 446px;
+      left: 546px;
+    }
+
+    .wht-type-2100 {
+      position: absolute;
+      top: 464px;
+      left: 546px;
+    }
+
+    .wht-type-note-2100 {
+      position: absolute;
+      top: 463px;
+      left: 748px;
+    }
+  }
+}
