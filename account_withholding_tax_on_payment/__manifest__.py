@@ -2,7 +2,7 @@
     "name": "Withholding Tax On Payment",
     "summary": "Create and manage withholding tax documents linked to payments",
     "description": "Manage Withholding Tax (WHT) documents linked to Payments, including certificate report printing and XLSX export.",
-    "version": "18.0.1.0.0",
+    "version": "19.0.1.0.0",
     "category": "Accounting",
     "author": "Odd Lab",
     "license": "OPL-1",
