@@ -19,7 +19,7 @@ This addon for managing **Withholding Tax (WHT)** documents linked to **Payments
 - Requires the **Other** field when `tax_section` is `425` or `6`
 - Generates WHT document numbers using a company-specific sequence
 - On confirmation, validates that the related Payment is in **paid** state
-- Exports documents to **XLSX** using a template (`static/template/withholding_tax_template.xlsx`)
+- Exports documents to **XLSX** using a template from `account_withholding_tax_on_payment` (`account_withholding_tax_on_payment/static/template/withholding_tax_template.xlsx`)
 - Provides a QWeb report / printable withholding tax certificate
 
 ## Dependencies
@@ -27,6 +27,10 @@ This addon for managing **Withholding Tax (WHT)** documents linked to **Payments
 This module depends on the following modules:
 
 - `l10n_account_withholding_tax`
+
+## Requirements
+
+- Python package: `openpyxl`
 
 ## Installation
 
