@@ -8,7 +8,9 @@ from odoo import api, fields, models
 from odoo.exceptions import ValidationError
 from odoo.modules.module import get_module_resource
 from odoo.tools import html2plaintext
-from odoo.addons.account_withholding_tax_on_payment.tools.date_tools import get_locale_date_format
+from odoo.addons.account_withholding_tax_on_payment.tools.date_tools import (
+    get_locale_date_format,
+)
 
 
 class AccountWithholdingTax(models.Model):
@@ -303,9 +305,9 @@ class AccountWithholdingTax(models.Model):
         self.write_cell(
             ws=ws,
             cell="G50",
-            value=self.partner_id.currency_id.with_context(lang="th_TH").amount_to_text(
-                sum(self.withholding_line_ids.mapped("amount"))
-            ),
+            value=self.partner_id.currency_id.with_context(
+                lang=self.env.user.lang or "th_TH"
+            ).amount_to_text(sum(self.withholding_line_ids.mapped("amount"))),
         )
         self.write_cell(
             ws=ws,
