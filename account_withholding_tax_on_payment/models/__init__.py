@@ -5,6 +5,6 @@ from . import account_withholding_tax_line
 from . import res_company
 from . import res_config_settings
 from . import account_tax
-from . import ir_sequence_date_range
+from . import ir_sequence
 from . import res_currency
 from . import res_partner
