@@ -39,4 +39,5 @@
     "application": False,
     "price": 299.99,
     "currency": "USD",
+    "pre_init_hook": "pre_init_hook",
 }

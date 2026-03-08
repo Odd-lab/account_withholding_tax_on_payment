@@ -3,7 +3,7 @@
   <template id="report_account_wht_certificate">
     <t t-foreach="docs" t-as="o">
       <t t-call="web.basic_layout">
-        <t t-set="o" t-value="o.with_context(lang='th_TH')" />
+        <t t-set="o" t-value="o.with_context(lang=o.env.user.lang or 'th_TH')" />
         <div
           data-name="wh3"
           style="background-image: url(/account_withholding_tax_on_payment/static/src/img/WithholdingCert.png); background-repeat: no-repeat; background-size: 100% 1150px; min-height: 1150px;"
