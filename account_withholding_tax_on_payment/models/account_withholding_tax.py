@@ -6,10 +6,12 @@ from openpyxl.styles import Font
 from datetime import date, datetime
 from odoo import api, fields, models
 from odoo.exceptions import ValidationError
-from odoo.modules.module import get_module_resource
 from odoo.tools import html2plaintext
 from odoo.addons.account_withholding_tax_on_payment.tools.date_tools import (
     get_locale_date_format,
+)
+from odoo.addons.account_withholding_tax_on_payment.tools.get_module_resource import (
+    get_module_resource,
 )
 
 
