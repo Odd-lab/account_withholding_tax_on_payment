@@ -119,10 +119,8 @@ class AccountWithholdingTax(models.Model):
     @api.depends("withholding_line_ids.tax_id.invoice_repartition_line_ids.account_id")
     def _compute_pnd_type(self):
         pnd_mapping = {
-            "+PND3": "pnd3",
-            "+PND53": "pnd53",
-            "-PND3": "pnd3",
-            "-PND53": "pnd53",
+            "PND3": "pnd3",
+            "PND53": "pnd53",
         }
         for rec in self:
             tags = rec.withholding_line_ids.mapped(
