@@ -35,6 +35,9 @@
             "account_withholding_tax_on_payment/static/src/css/*.scss",
         ],
     },
+    "images": [
+        "static/description/assets/screenshots/banner.png",
+    ],
     "installable": True,
     "application": False,
     "price": 299.99,
